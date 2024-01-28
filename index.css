@@ -1,0 +1,115 @@
+*{
+    margin: 0px;
+    box-sizing: border-box;
+}
+.main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #f5e6e6;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+}
+.label{
+  font-weight: 600;
+  font-size: 20px;
+  font-family: "Roboto";
+}
+.pass-card{
+  padding: 6px 10px;
+  margin-bottom: 10px;
+  font-size: 17px;
+  border-radius: 8px;
+  border: 1px solid #807676;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+}
+.password{
+  border: none;
+  padding: 0px;
+  margin: 0px;
+  width: 90%;
+  outline: none;
+}
+input{
+    background-color: #fff;
+    padding: 8px 10px;
+    margin-bottom: 10px;
+    font-size: 17px;
+    border-radius: 8px;
+    border: 1px solid #807676;
+    outline: none;
+}
+.btn-card{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+button{
+    padding: 6px 10px;
+    cursor: pointer;
+    border-radius: 6px;
+    outline: none;
+    color: #000000;
+  background-color: #fff;
+  border: solid #000000 2px;
+  font-weight: 600;
+}
+#err{
+    text-align: center;
+    margin-top: 20px;
+    color: red;
+}
+span{
+  color: red;
+}
+.icon{
+  width: 20px;
+  cursor: pointer;
+}
+.blur{
+  filter: blur(2px);
+}
+.show-popup{
+  display: none !important;
+}
+.popup{
+  position: absolute;
+  background-color: #ebfdff;
+  width: 400px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: inset 0px 0px 2px 1px #807676;
+  padding: 10px;
+}
+.popup svg{
+  align-self: flex-end;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  cursor: pointer;
+}
+.popup h1{
+  color: #07a52e;
+  font-weight: 700;
+  font-size: 30px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.popup p{
+  color: #807676;
+  font-size: 20px;
+  font-weight: 600;
+}
