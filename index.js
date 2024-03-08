@@ -1,29 +1,50 @@
 let firstNm = document.getElementById("firstNm");
 let lastNm = document.getElementById("lastNm");
+
 let email = document.getElementById("email");
 let password = document.getElementById("password");
+
 let loginForm = document.getElementById("loginForm");
-let errMsg = document.getElementById("err");
 let resetBtn = document.getElementById("resetBtn");
+
+let errMsg = document.getElementById("err");
 let popupEl = document.getElementById("popupEl");
+
+let showPassword = document.getElementById("onShowPassword");
+let autoSigningCheck = document.getElementById("autoSigningCheck");
+
+let firstName = firstNm.value;
+let lastName = lastNm.value;
+let emailVal = email.value;
+let passVal = password.value;
+let errorMsg = "";
 
 popupEl.classList.add("show-popup");
 
-let icon = document.getElementById("onclickIcon");
-icon.addEventListener("click", () => {
-  alert("It's just visible icon for this website!!");
+showPassword.addEventListener("click", () => {
+  if (password.type == "password") {
+    password.type = "text";
+    showPassword.style.color = "red";
+  } else {
+    password.type = "password";
+    showPassword.style.color = "black";
+  }
 });
 
-let emailVal = "";
-let passVal = "";
-let errorMsg = "";
-
-email.addEventListener("change", function () {
-  emailVal = email.value;
+firstNm.addEventListener("change", function (event) {
+  firstName = event.target.value;
 });
 
-password.addEventListener("change", function () {
-  passVal = password.value;
+lastNm.addEventListener("change", function (event) {
+  lastName = event.target.value;
+});
+
+email.addEventListener("change", function (event) {
+  emailVal = event.target.value;
+});
+
+password.addEventListener("change", function (event) {
+  passVal = event.target.value;
 });
 
 function checkDetails(emailVal, passVal) {
@@ -54,9 +75,24 @@ loginForm.addEventListener("submit", function (event) {
   let result = checkDetails(emailVal, passVal);
   // errMsg.textContent = result;
   if (result === "ok") {
-    errMsg.textContent = "";
+    let userDetails = {
+      firstName: firstName,
+      lastName: lastName,
+      email: emailVal,
+      password: passVal,
+    };
+    if (autoSigningCheck.checked) {
+      console.log(userDetails);
+      localStorage.setItem("userDetails", JSON.stringify(userDetails));
+    }
     loginForm.classList.add("blur");
     popupEl.classList.remove("show-popup");
+
+    email.value = "";
+    password.value = "";
+    firstNm.value = "";
+    lastNm.value = "";
+    errMsg.textContent = "";
   } else {
     errMsg.textContent = result;
   }
@@ -67,6 +103,8 @@ resetBtn.addEventListener("click", () => {
   password.value = "";
   firstNm.value = "";
   lastNm.value = "";
+  errMsg.textContent = "";
+  autoSigningCheck.checked = false;
 });
 
 function closePopup() {
@@ -76,4 +114,6 @@ function closePopup() {
   password.value = "";
   firstNm.value = "";
   lastNm.value = "";
+  errMsg.textContent = "";
+  autoSigningCheck.checked = false;
 }
